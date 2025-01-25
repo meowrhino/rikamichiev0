@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="description" content="rikamichie te cuida">
+    <meta name="keywords" content="masajes, barcelona">
+    <meta name="author" content="rikamichie">
+    <title>masajes de rika</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&display=swap');
+
+        :root {
+            --color-rosa: #DC346F;
+            --color-negro: #181818;
+            --color-papel: #f5f5dc;
+        }
+
+        body {
+            font-family: "Instrument Serif", serif;
+            font-weight: bold;
+            /*esto es un poco mala praxis*/
+
+            background-color: var(--color-negro);
+            color: var(--color-rosa);
+            transition: background-color 1s ease, color 1s ease;
+
+            height: 95vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            box-sizing: border-box;
+
+            background-image:
+                radial-gradient(circle, rgba(255, 255, 255, 0.2) 1%, transparent 1%),
+                radial-gradient(circle, rgba(255, 255, 255, 0.2) 1%, transparent 1%),
+                linear-gradient(0deg, rgba(0, 0, 0, 0.05) 1%, transparent 1%);
+            background-size: 5px 5px;
+            background-blend-mode: multiply;
+        }
+
+        .invertido {
+            background-color: var(--color-rosa);
+            color: var(--color-negro);
+            background-image:
+                radial-gradient(circle, rgba(0, 0, 0, 0.2) 1%, transparent 1%),
+                radial-gradient(circle, rgba(0, 0, 0, 0.2) 1%, transparent 1%),
+                linear-gradient(0deg, rgba(255, 255, 255, 0.05) 1%, transparent 1%);
+            background-size: 5px 5px;
+            background-blend-mode: multiply;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .section {
+            background-color: var(--color-rosa);
+            color: var(--color-negro);
+
+            box-sizing: border-box;
+            transition: background-color 1s ease, color 1s ease;
+        }
+
+        .invertido .section {
+            background-color: var(--color-negro);
+            color: var(--color-rosa);
+        }
+
+        /* Asegurando que los elementos hijos hereden correctamente el color */
+        .invertido h2,
+        .invertido p,
+        .invertido span {
+            color: var(--color-rosa);
+        }
+
+        h2 {
+            font-size: 40px;
+            /* Cambia el tamaño del texto para que sea proporcional a la pantalla */
+            margin: 0;
+        }
+
+        p {
+            margin: 0;
+        }
+        
+        span, p {
+            font-size: 18px;
+        }
+
+        .tarifas {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .tarifa {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .hoverable {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .popup {
+            display: none;
+            position: absolute;
+            top: -60px;
+            left: 0;
+            width: 200px;
+            max-width: 90vw;
+            /* Limita el ancho del pop-up para pantallas pequeñas */
+            padding: 10px;
+            background: var(--color-negro);
+            color: var(--color-rosa);
+            font-size: 12px;
+            /* Reduce el tamaño de fuente para que no ocupe mucho espacio */
+            border-radius: 5px;
+        }
+
+        .invertido .popup {
+            background: var(--color-rosa);
+            color: var(--color-negro);
+        }
+
+        .hoverable:hover .popup {
+            display: block;
+        }
+
+        .toggle-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--color-rosa);
+            border: none;
+            cursor: pointer;
+            transition: background-color 1s ease, transform 0.3s ease;
+        }
+
+        .toggle-button:hover {
+            transform: scale(1.1);
+        }
+
+        .invertido .toggle-button {
+            background: var(--color-negro);
+        }
+
+        .erika {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="toggle-button" onclick="toggleColors()"></button>
+
+    <div class="container">
+        <div class="section">
+            <h2>MASAJES:</h2>
+            <p>
+                <span class="hoverable">relajante<span class="popup">Ayuda a reducir el estrés y mejorar el bienestar general.</span></span> /
+                <span class="hoverable">descontracturante<span class="popup">Ideal para aliviar contracturas y tensiones musculares.</span></span> /
+                <span class="hoverable">deportivo<span class="popup">Perfecto para antes o después de la actividad física intensa.</span></span>
+            </p>
+        </div>
+        <div class="section tarifas">
+            <h2>tarifas:</h2>
+            <div class="tarifa">
+                <span>una hora</span>
+                <span>
+                    <span class="precio-normal">44</span> /
+                    <span class="precio-reducido">33</span>
+                </span>
+            </div>
+            <div class="tarifa">
+                <span>una hora y media</span>
+                <span>
+                    <span class="precio-normal">55</span> /
+                    <span class="precio-reducido">44</span>
+                </span>
+            </div>
+            <div class="tarifa">
+                <span></span>
+                <span><span class="precio-normal">normal</span>/<span class="precio-reducido">reducido</span></span>
+            </div>
+        </div>
+        <div class="section erika">
+            <h2>erika michi</h2>
+            <span>673 928 826</span>
+        </div>
+    </div>
+
+    <script>
+        function toggleColors() {
+            document.body.classList.toggle('invertido');
+        }
+
+        // Función para subrayar elementos de una clase específica al pasar el ratón
+        function addHoverEffect(className) {
+            document.querySelectorAll(className).forEach(function (element) {
+                element.addEventListener('mouseenter', function () {
+                    document.querySelectorAll(className).forEach(function (el) {
+                        el.style.textDecoration = 'underline';
+                    });
+                });
+                element.addEventListener('mouseleave', function () {
+                    document.querySelectorAll(className).forEach(function (el) {
+                        el.style.textDecoration = 'none';
+                    });
+                });
+            });
+        }
+
+        // Añadir el efecto de hover para las clases 'precio-normal' y 'precio-reducido'
+        addHoverEffect('.precio-normal');
+        addHoverEffect('.precio-reducido');
+    </script>
+</body>
+
+</html>
